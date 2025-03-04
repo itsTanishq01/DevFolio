@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { playSound } from '../utils/audioUtils';
@@ -22,6 +23,7 @@ interface MenuItem {
 
 const mainMenuItems: MenuItem[] = [
   { label: 'ABOUT', path: '/about' },
+  { label: 'EDUCATION', path: '/education' },
   { label: 'EXPERIENCE', path: '/experience' },
   { label: 'PROJECTS', path: '/projects' },
   { label: 'SKILLS', path: '/skills' },
@@ -73,14 +75,14 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
       return;
     }
     
-    // Navigation in the main menu
+    // Navigation in the main menu - with cyclical behavior
     if (location.pathname === '/menu') {
       if (e.key === 'ArrowUp' || e.key === 'w') {
         playSound('move');
-        setSelectedIndex(prev => Math.max(0, prev - 1));
+        setSelectedIndex(prev => (prev === 0 ? mainMenuItems.length - 1 : prev - 1));
       } else if (e.key === 'ArrowDown' || e.key === 's') {
         playSound('move');
-        setSelectedIndex(prev => Math.min(mainMenuItems.length - 1, prev + 1));
+        setSelectedIndex(prev => (prev === mainMenuItems.length - 1 ? 0 : prev + 1));
       } else if (e.key === 'Enter') {
         playSound('select');
         navigate(mainMenuItems[selectedIndex].path);
