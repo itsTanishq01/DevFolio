@@ -12,16 +12,32 @@ const RetroControls: React.FC = () => {
   const handleDPadUp = () => {
     if (location.pathname === '/menu') {
       playSound('move');
-      const newIndex = Math.max(0, selectedIndex - 1);
+      const newIndex = selectedIndex === 0 ? menuItems.length - 1 : selectedIndex - 1;
       setSelectedIndex(newIndex);
+      
+      // Scroll to ensure the selected item is visible
+      setTimeout(() => {
+        const selectedElement = document.querySelector(`[data-menu-index="${newIndex}"]`);
+        if (selectedElement) {
+          selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 10);
     }
   };
 
   const handleDPadDown = () => {
     if (location.pathname === '/menu') {
       playSound('move');
-      const newIndex = Math.min(menuItems.length - 1, selectedIndex + 1);
+      const newIndex = selectedIndex === menuItems.length - 1 ? 0 : selectedIndex + 1;
       setSelectedIndex(newIndex);
+      
+      // Scroll to ensure the selected item is visible
+      setTimeout(() => {
+        const selectedElement = document.querySelector(`[data-menu-index="${newIndex}"]`);
+        if (selectedElement) {
+          selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 10);
     }
   };
 

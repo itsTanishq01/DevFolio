@@ -27,6 +27,7 @@ const mainMenuItems: MenuItem[] = [
   { label: 'EXPERIENCE', path: '/experience' },
   { label: 'PROJECTS', path: '/projects' },
   { label: 'SKILLS', path: '/skills' },
+  { label: 'RESUME', path: '/resume' },
   { label: 'CONTACT', path: '/contact' },
 ];
 
@@ -79,10 +80,30 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
     if (location.pathname === '/menu') {
       if (e.key === 'ArrowUp' || e.key === 'w') {
         playSound('move');
-        setSelectedIndex(prev => (prev === 0 ? mainMenuItems.length - 1 : prev - 1));
+        setSelectedIndex(prev => {
+          const newIndex = prev === 0 ? mainMenuItems.length - 1 : prev - 1;
+          // Scroll to the selected menu item after a short delay to ensure the DOM is updated
+          setTimeout(() => {
+            const selectedElement = document.querySelector(`[data-menu-index="${newIndex}"]`);
+            if (selectedElement) {
+              selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }, 10);
+          return newIndex;
+        });
       } else if (e.key === 'ArrowDown' || e.key === 's') {
         playSound('move');
-        setSelectedIndex(prev => (prev === mainMenuItems.length - 1 ? 0 : prev + 1));
+        setSelectedIndex(prev => {
+          const newIndex = prev === mainMenuItems.length - 1 ? 0 : prev + 1;
+          // Scroll to the selected menu item after a short delay to ensure the DOM is updated
+          setTimeout(() => {
+            const selectedElement = document.querySelector(`[data-menu-index="${newIndex}"]`);
+            if (selectedElement) {
+              selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }, 10);
+          return newIndex;
+        });
       } else if (e.key === 'Enter') {
         playSound('select');
         navigate(mainMenuItems[selectedIndex].path);
