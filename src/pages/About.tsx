@@ -12,13 +12,13 @@ const About = () => {
         
         <div className="text-[10px] leading-normal space-y-3 text-retro-border">
           <p>
-            Hi! I'm a passionate developer with expertise in modern web technologies.
+            Game Developer, Tech Enthusiast and F1 Addict.
           </p>
           <p>
-            I create scalable, user-friendly applications with clean code and intuitive interfaces.
+            I create fun, user-friendly games with clean code and less lag.
           </p>
           <p>
-            My background in both frontend and backend development allows me to build complete solutions from concept to deployment.
+            I mostly use C++ and Unreal but had fun with Unity and Raylib.
           </p>
         </div>
         

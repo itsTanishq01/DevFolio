@@ -1,32 +1,24 @@
-
 import React, { useEffect } from 'react';
 import RetroConsole from '@/components/RetroConsole';
 import { useNavigation } from '../context/NavigationContext';
 
 const experiences = [
   {
-    title: "SENIOR DEVELOPER",
-    company: "TECH INNOVATIONS INC.",
-    period: "2021 - PRESENT",
-    description: "Led development of scalable web applications using React, Node.js, and TypeScript."
-  },
-  {
-    title: "FRONTEND DEVELOPER",
-    company: "DIGITAL CREATIONS CO.",
-    period: "2018 - 2021",
-    description: "Built responsive interfaces and optimized performance for high-traffic web applications."
-  },
-  {
-    title: "JUNIOR DEVELOPER",
-    company: "WEBTECH SOLUTIONS",
-    period: "2016 - 2018",
-    description: "Developed and maintained client websites and e-commerce platforms using JavaScript and PHP."
+    title: "INTERN",
+    company: "INDIAN OIL CORPORATION",
+    location: "Bhubaneshwar, India",
+    period: "Jan 2024 – Feb 2024",
+    description: [
+      "Engineered Python automation scripts to streamline and accelerate report generation processes.",
+      "Automated manual report creation, eliminating human error.",
+      "Significantly increased operational efficiency."
+    ]
   }
 ];
 
 const Experience = () => {
   const { currentSubItemIndex, setMaxSubItems } = useNavigation();
-  
+
   useEffect(() => {
     setMaxSubItems(experiences.length);
   }, []);
@@ -46,7 +38,12 @@ const Experience = () => {
           <p className="font-bold">{currentExperience.title}</p>
           <p>{currentExperience.company}</p>
           <p>{currentExperience.period}</p>
-          <p className="mt-4">{currentExperience.description}</p>
+          
+          <ul className="mt-4 text-[8px] list-disc pl-5">
+            {currentExperience.description.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </div>
         
         <div className="mt-auto flex justify-center items-center text-[8px] text-retro-border">

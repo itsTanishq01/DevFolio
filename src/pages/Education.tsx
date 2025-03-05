@@ -1,4 +1,3 @@
-
 import React from 'react';
 import RetroConsole from '@/components/RetroConsole';
 
@@ -12,26 +11,32 @@ const Education = () => {
         
         <div className="text-[10px] leading-normal space-y-3 text-retro-border">
           <div className="mb-4">
-            <p className="font-bold mb-1">COMPUTER SCIENCE, B.SC</p>
-            <p>Stanford University</p>
-            <p>2018 - 2022</p>
-            <p className="mt-1 text-[8px]">• Graduated with honors</p>
-            <p className="text-[8px]">• Focus on AI and Machine Learning</p>
+            <p className="font-bold mb-1">COMPUTER SCIENCE, B.Tech</p>
+            <p>Kalinga Institute of Industrial Technology </p>
+            <p>2022 - 2026</p>
+            <p className="mt-1 text-[8px]">• CGPA: 7.5</p>
+            <p className="text-[8px]">• Concentrations : Game Development, C++  </p>
           </div>
-          
           <div className="mb-4">
-            <p className="font-bold mb-1">WEB DEVELOPMENT BOOTCAMP</p>
-            <p>Code Academy</p>
-            <p>2017</p>
-            <p className="mt-1 text-[8px]">• Full-stack development</p>
-            <p className="text-[8px]">• Agile methodologies</p>
-          </div>
-          
-          <div className="mb-4">
-            <p className="font-bold mb-1">HIGH SCHOOL DIPLOMA</p>
-            <p>Tech High School</p>
-            <p>2014 - 2018</p>
-            <p className="mt-1 text-[8px]">• Computer Science Club President</p>
+            <p className="font-bold mb-1">RELATED COURSEWORK</p>
+            <p className="text-[8px]">
+              • Data Structures & Algorithms
+            </p>
+            <p className="text-[8px]">
+              • Operating Systems
+            </p>
+            <p className="text-[8px]">
+              • Database Management Systems
+            </p>
+            <p className="text-[8px]">
+              • Artificial Intelligence
+            </p>
+            <p className="text-[8px]">
+              • Object-Oriented Programming
+            </p>
+            <p className="text-[8px]">
+              • Software Engineering
+            </p>
           </div>
         </div>
         

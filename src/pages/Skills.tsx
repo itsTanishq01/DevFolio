@@ -6,15 +6,15 @@ const Skills = () => {
   const skillGroups = [
     {
       category: "LANGUAGES",
-      skills: ["JAVASCRIPT", "TYPESCRIPT", "HTML", "CSS", "PYTHON"]
+      skills: ["C++", "C", "Java", "PYTHON"]
     },
     {
       category: "FRAMEWORKS",
-      skills: ["REACT", "ANGULAR", "VUE", "NODE.JS", "EXPRESS"]
+      skills: ["ImGui", "Keras", "Scikit-learn", "NumPy", "Pandas"]
     },
     {
       category: "TOOLS",
-      skills: ["GIT", "DOCKER", "AWS", "WEBPACK", "JEST"]
+      skills: ["GIT", "Unreal Engine", "Unity"]
     }
   ];
 
