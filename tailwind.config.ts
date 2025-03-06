@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +18,13 @@ export default {
 			}
 		},
 		extend: {
+			utilities: {
+        '.mask-image': {
+          'mask-size': 'contain',
+          'mask-repeat': 'no-repeat',
+          'mask-position': 'center',
+        },
+      },
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -95,7 +101,20 @@ export default {
 				'pixel-in': {
 					'0%': { opacity: '0', transform: 'scale(0.95)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
-				}
+				},
+        'fadeIn': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.6' },
+        },
+        'pixelIn': {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '70%': { transform: 'scale(1.05)' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -103,7 +122,10 @@ export default {
 				'blink': 'blink 1s step-end infinite',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'scanline': 'scanline 8s linear infinite',
-				'pixel-in': 'pixel-in 0.3s ease-out'
+				'pixel-in': 'pixel-in 0.3s ease-out',
+        'fadeIn': 'fadeIn 0.5s ease-in-out',
+        'pulse': 'pulse 2s infinite',
+        'pixelIn': 'pixelIn 0.8s ease-out',
 			},
 			fontFamily: {
 				'pixel': ['"Press Start 2P"', 'cursive', 'monospace']
