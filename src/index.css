@@ -1,7 +1,89 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Gameboy Color Palette: 
+ * Lightest: #e0f8d0 (Light Yellow-Green)
+ * Light: #9bbc0f (Light Green)
+ * Dark: #8bac0f (Green)
+ * Darkest: #0f380f (Dark Green)
+ * Mid tone: #306230 (Medium Green)
+ */
+
 @tailwind base;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pixel-fade {
+  0% { opacity: 0.5; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pixel-fade {
+  animation: pixel-fade 2s ease-in-out infinite;
+}
+
+.animate-glitch {
+  animation: glitch 0.5s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.bg-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  animation: scanline 8s linear infinite;
+}
+
+.bg-pattern-diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(255, 255, 255, 0.1) 5px,
+    rgba(255, 255, 255, 0.1) 10px
+  );
+}
+
+.font-pixelated {
+  font-family: monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -9,6 +91,46 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes typing {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5%); }
+}
+
+.animate-typing {
+  animation: typing 10s linear infinite;
+}
+
+.blink::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@keyframes pulse-light {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-light {
+  animation: pulse-light 1.5s ease-in-out infinite;
+}
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
