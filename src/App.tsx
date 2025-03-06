@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Resume from './pages/Resume';
 import Settings from './pages/Settings';
+import ActivitiesLeadership from './pages/ActivitiesLeadership';
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/experience" element={<Experience />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/skills" element={<Skills />} />
+              <Route path="/activities-leadership" element={<ActivitiesLeadership />} />
               <Route path="/resume" element={<Resume />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/settings" element={<Settings />} />

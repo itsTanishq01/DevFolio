@@ -26,6 +26,7 @@ const mainMenuItems: MenuItem[] = [
   { label: 'ABOUT', path: '/about', icon: '👤' },
   { label: 'EDUCATION', path: '/education', icon: '🎓' },
   { label: 'EXPERIENCE', path: '/experience', icon: '💼' },
+  { id: 9, label: 'ACTIVITIES & LEADERSHIP', path: '/activities-leadership', icon: '🏆' },
   { label: 'PROJECTS', path: '/projects', icon: '🚀' },
   { label: 'SKILLS', path: '/skills', icon: '🛠️' },
   { label: 'RESUME', path: '/resume', icon: '📄' },
@@ -133,7 +134,7 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
     setCurrentSubItemIndex(0);
 
     // Set has sub-items based on the location
-    setHasSubItems(['/experience', '/projects'].includes(location.pathname));
+    setHasSubItems(['/experience', '/projects', '/activities-leadership'].includes(location.pathname));
   }, [location.pathname]);
 
   const contextValue: NavigationContextType = {
