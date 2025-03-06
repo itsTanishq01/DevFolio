@@ -5,15 +5,25 @@ const sounds = {
     back: new Audio('/sounds/back.mp3'),
   };
   
-  // Set volume levels
+  // Set volume levels (initial volume, overridden by localStorage value in playSound)
   Object.values(sounds).forEach(sound => {
     sound.volume = 0.5;
   });
   
-  export const playSound = (soundType: keyof typeof sounds) => {
-    // Clone the audio to allow overlapping sounds
-    const soundToPlay = sounds[soundType].cloneNode() as HTMLAudioElement;
-    soundToPlay.volume = sounds[soundType].volume;
-    soundToPlay.play().catch(e => console.error("Audio playback failed:", e));
+  export const playSound = (soundName: string) => {
+    // Get volume from localStorage (or default to 0.5 if not set)
+    const volume = parseFloat(localStorage.getItem('retroPortfolioVolume') || '0.5');
+
+    // Check which sounds are available
+    const sounds = {
+      select: new Audio('/sounds/select.mp3'),
+      move: new Audio('/sounds/move.mp3'),
+      back: new Audio('/sounds/back.mp3'),
+    };
+
+    const sound = sounds[soundName as keyof typeof sounds];
+    if (sound) {
+      sound.volume = volume;
+      sound.play().catch(err => console.error('Error playing sound:', err));
+    }
   };
-  

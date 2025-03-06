@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavigationProvider } from "./context/NavigationContext";
+import { VolumeProvider } from "./context/VolumeContext";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import About from "./pages/About";
@@ -15,6 +16,7 @@ import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Resume from './pages/Resume';
+import Settings from './pages/Settings';
 
 const queryClient = new QueryClient();
 
@@ -24,20 +26,23 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <NavigationProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/education" element={<Education />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </NavigationProvider>
+        <VolumeProvider>
+          <NavigationProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </NavigationProvider>
+        </VolumeProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

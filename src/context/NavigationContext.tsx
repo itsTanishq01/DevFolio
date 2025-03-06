@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { playSound } from '../utils/audioUtils';
@@ -19,16 +18,19 @@ interface NavigationContextType {
 interface MenuItem {
   label: string;
   path: string;
+  icon?: string;
 }
 
+// Define main menu items
 const mainMenuItems: MenuItem[] = [
-  { label: 'ABOUT', path: '/about' },
-  { label: 'EDUCATION', path: '/education' },
-  { label: 'EXPERIENCE', path: '/experience' },
-  { label: 'PROJECTS', path: '/projects' },
-  { label: 'SKILLS', path: '/skills' },
-  { label: 'RESUME', path: '/resume' },
-  { label: 'CONTACT', path: '/contact' },
+  { label: 'ABOUT', path: '/about', icon: '👤' },
+  { label: 'EDUCATION', path: '/education', icon: '🎓' },
+  { label: 'EXPERIENCE', path: '/experience', icon: '💼' },
+  { label: 'PROJECTS', path: '/projects', icon: '🚀' },
+  { label: 'SKILLS', path: '/skills', icon: '🛠️' },
+  { label: 'RESUME', path: '/resume', icon: '📄' },
+  { label: 'CONTACT', path: '/contact', icon: '📱' },
+  { label: 'SETTINGS', path: '/settings', icon: '⚙️' },
 ];
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
@@ -43,16 +45,16 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
 
   const handleKeyNavigation = (e: KeyboardEvent) => {
     const isInSubItem = location.pathname !== '/' && location.pathname !== '/menu';
-    
+
     // Only process navigation for the following keys
     const isNavigationKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 
                             'w', 'a', 's', 'd', 'Enter', 'Escape'].includes(e.key);
-    
+
     if (!isNavigationKey) return;
-    
+
     // Prevent default behavior for navigation keys
     e.preventDefault();
-    
+
     // Handle Escape key for all pages
     if (e.key === 'Escape') {
       playSound('back');
@@ -63,7 +65,7 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
       }
       return;
     }
-    
+
     // Navigation within sub-items (like experience slides)
     if (isInSubItem && hasSubItems) {
       if (e.key === 'ArrowRight' || e.key === 'd') {
@@ -75,7 +77,7 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
       }
       return;
     }
-    
+
     // Navigation in the main menu - with cyclical behavior
     if (location.pathname === '/menu') {
       if (e.key === 'ArrowUp' || e.key === 'w') {
@@ -109,7 +111,7 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
         navigate(mainMenuItems[selectedIndex].path);
       }
     }
-    
+
     // Navigation on the start screen
     if (location.pathname === '/') {
       if (e.key === 'Enter') {
@@ -129,7 +131,7 @@ export const NavigationProvider: React.FC<{ children: ReactNode }> = ({ children
   useEffect(() => {
     // Reset sub-item index when location changes
     setCurrentSubItemIndex(0);
-    
+
     // Set has sub-items based on the location
     setHasSubItems(['/experience', '/projects'].includes(location.pathname));
   }, [location.pathname]);
